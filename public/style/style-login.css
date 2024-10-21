@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.container-login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgb(211, 210, 210);
+}
+.login {
+    background-color: #fff;
+    width: 40%;
+    height: 65%;
+    position: absolute;
+    border-radius: 5px;
+    padding:25px;
+    color: #fff;
+    z-index: 2;
+}
+.titulo{
+    color:rgb(255, 111, 0);
+    text-align: center;
+    font-weight: bolder;
+}
+.titulos-login{
+    color: black;
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+.titulos-login h2{
+    color:rgb(255, 111, 0);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.icone{
+    color:gray;
+    position: absolute;
+    top:45%;
+    left:7%;
+    transition: .2s ease-in-out;
+}
+.icone2{
+    color:gray;
+    position: absolute;
+    top:55%;
+    left:7%;
+    transition: .2s ease-in-out;
+}
+
+.componente input{
+    width: 70%;
+    border:none;
+    border-bottom: 1px solid gray;
+    border-radius: 5px;
+    background-color: white; 
+    padding:10px;
+    padding-left: 40px;
+    margin-top: 5px;
+    transition: .2s ease-in-out;
+}
+input:focus{
+    border-color: rgb(255, 111, 0); 
+    outline: none;
+}
+input:focus + .icone {
+    color: rgb(255, 111, 0); 
+}
+input:focus + .icone2{
+    color: rgb(255, 111, 0); 
+}
+
+.container-btn{
+    display:flex;
+    justify-content: center;
+    padding: 30px 0px;
+    position: relative;
+    font-size: 12px;
+}
+.esq-reg{
+    color:gray;
+}
+.esq-reg > a{
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 111, 0);
+    transition: .2s ease-in-out;
+}
+.esq-reg > a:hover{
+    text-decoration: underline;
+}
+.btn-confirmar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.btn-confirmar #Enviar{
+    border: none;
+    border-radius:5px;
+    color:#fff;
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    background-color: #03c700;
+    transition: .3s ease-in-out;
+}
+#Enviar:hover{
+    background-color: #03c7009c;
+    cursor: pointer;
+}
+.quadrado-start {
+    background-color: rgb(255, 111, 0);
+    width: 200px; 
+    height: 200px; 
+    transform: rotate(-45deg); 
+    position: absolute;
+    top: 15%;
+    left: 22%;
+    animation: rotate 10s linear infinite, fade 5s linear infinite; 
+}
+
+.quadrado-end {
+    background-color: rgb(255, 111, 0);
+    width: 250px; 
+    height: 250px; 
+    transform: rotate(-45deg); 
+    position: absolute;
+    bottom: 15%;
+    right: 20%;
+    animation: rotate 10s linear infinite, fade 5s linear infinite; 
+    z-index: 1;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform: rotate(360deg); 
+    }
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 1; 
+    }
+    50% {
+        opacity: 0; 
+    }
+    100% {
+        opacity: 1; 
+    }
+}
