@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre-se</title>
+    <link rel="stylesheet" href="../public/style/style-register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="container-register">
+        <div class="quadrado-start"></div>
+        <div class="register">
+            <div class="titulos-register">
+                <h1 class="titulo">FUNCIONALIZE</h1>
+                <h2>Cadastro</h2>
+                <p>Insira algumas informações para completar o cadastro!</p>
+            </div>
+            <form id="form-register">
+                <div class="componentes">
+                    <div class="componente">
+                            <input type="text" name="nome" id="nome-empresa" placeholder="Nome da Empresa" required>
+                            <i class="icone fa-solid fa-building"></i>
+                    </div>
+                    <div class="componente">
+                        <input type="email" name="email-empresa" id="email-empresa" placeholder="email@gmail.com" required>
+                        <i class="icone2 fa-solid fa-envelope"></i>
+                </div>
+                    <div class="componente">
+                            <input type="password" name="password-empresa" id="password-empresa" placeholder="********" required>
+                            <i class="icone3 fa-solid fa-lock"></i>
+                    </div>
+                    <div class="componente">
+                        <select name="nicho" id="nicho">
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="Saúde e Bem-Estar">Saúde e Bem-Estar</option>
+                            <option value="Moda e Beleza">Moda e Beleza</option>
+                            <option value="Alimentação e Bebidas">Alimentação e Bebidas</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Viagens e Turismo">Viagens e Turismo</option>
+                            <option value="Casa e Decoração">Casa e Decoração</option>
+                            <option value="Finanças e Investimentos">Finanças e Investimentos</option>
+                            <option value="Animais de Estimação">Animais de Estimação</option>
+                            <option value="Sustentabilidade e Meio Ambiente">Sustentabilidade e Meio Ambiente</option>
+                        </select>
+                        <i class="icone4 fas fa-globe"></i>
+                </div>
+                </div>
+                <div class="btn-confirmar">
+                    <button type="submit" id="Enviar">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div class="quadrado-end"></div>
+    </main>
+    <footer class="container-rodape">
+
+    </footer>
+</body>
+</html>

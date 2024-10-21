@@ -9,7 +9,7 @@ body{
     width: 100vw;
     height: 100vh;
 }
-.container-login{
+.container-register{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -18,7 +18,7 @@ body{
     position: relative;
     background-color: rgb(211, 210, 210);
 }
-.login {
+.register {
     background-color: #fff;
     width: 40%;
     height: auto;
@@ -33,12 +33,12 @@ body{
     text-align: center;
     font-weight: bolder;
 }
-.titulos-login{
+.titulos-register{
     color: black;
     padding-bottom: 20px;
     font-size: 15px;
 }
-.titulos-login h2{
+.titulos-register h2{
     color:rgb(255, 111, 0);
     font-weight: bold;
     font-size: 22px;
@@ -53,9 +53,11 @@ body{
     position: relative; 
     margin-bottom: 15px; 
 }
+.componente select {
+    color: gray; 
+}
 
-.icone,
-.icone2 {
+.icone,.icone2,.icone3,.icone4 {
     color: gray;
     position: absolute; 
     left: 10px; 
@@ -64,7 +66,7 @@ body{
     transition: color .2s ease-in-out; 
 }
 
-.componente input {
+.componente input, select {
     width: 100%;
     border: none;
     border-bottom: 1px solid gray;
@@ -75,7 +77,12 @@ body{
     transition: .2s ease-in-out;
 }
 
-input:focus {
+.componente select:focus{
+    border-color: rgb(255, 111, 0); 
+    outline: none;
+    cursor:pointer;
+}
+.componente input:focus {
     border-color: rgb(255, 111, 0); 
     outline: none;
 }
@@ -83,7 +90,11 @@ input:focus {
 input:focus + .icone,
 input:focus + .icone2,
 input:focus ~ .icone,
-input:focus ~ .icone2 {
+input:focus ~ .icone2,
+input:focus + .icone3,
+input:focus + .icone4,
+input:focus ~ .icone3,
+select:focus ~ .icone4 {
     color: rgb(255, 111, 0); 
 }
 
@@ -93,21 +104,6 @@ input:focus ~ .icone2 {
     padding: 30px 0px;
     position: relative;
     font-size: 12px;
-}
-.esq-reg{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    color:gray;
-}
-.esq-reg > a{
-    text-align: center;
-    text-decoration: none;
-    color: rgb(255, 111, 0);
-    transition: .2s ease-in-out;
-}
-.esq-reg > a:hover{
-    text-decoration: underline;
 }
 .btn-confirmar{
     display: flex;
