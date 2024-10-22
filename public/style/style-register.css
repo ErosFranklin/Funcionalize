@@ -126,8 +126,8 @@ select:focus ~ .icone4 {
 }
 .quadrado-start {
     background-color: rgb(255, 111, 0);
-    width: 200px; 
-    height: 200px; 
+    width: 250px; 
+    height: 250px; 
     transform: rotate(-45deg); 
     position: absolute;
     top: 15%;
@@ -137,8 +137,8 @@ select:focus ~ .icone4 {
 
 .quadrado-end {
     background-color: rgb(255, 111, 0);
-    width: 250px; 
-    height: 250px; 
+    width: 300px; 
+    height: 300px; 
     transform: rotate(-45deg); 
     position: absolute;
     bottom: 15%;
