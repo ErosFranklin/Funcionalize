@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNCIONALIZE</title>
+    <link rel="stylesheet" href="../public/style/style-principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="container-principal">
+        <header>
+              <nav class="menu-principal">
+                    <h2 id="nome-empresa">Nome da empresa</h2>
+                    <p id="nicho-empresa">Nicho da empresa</p>
+                <ul class="itens-menu">
+                    <li class="item-menus">
+                        <button id="btn-criar">Cadastrar Funcionario</button>
+                    </li>
+                </ul>
+              </nav>
+        </header>
+        <div id="overlay" class="overlay"></div>
+        <div id="modal" class="modal" style="display: none">
+          <h2>Cadastrar Funcionario</h2>
+          <form method="post" id="form-add-func">
+            <label for="nome-funcionario">Nome do Funcionário</label>
+            <div class="componentesG">
+              <i class="icone fa-solid fa-user"></i>
+              <input
+                type="text"
+                name="nome-funcionario"
+                id="nome-funcionario"
+                placeholder="Nome Completo do Funcionário"
+              />
+            </div>
+            <label for="idade-funcionario">Idade</label>
+            <div class="componentesG">
+              <i class="fa-solid fa-calendar-days"></i>
+              <input
+                type="number"
+                name="idade-funcionario"
+                id="idade-funcionario"
+                placeholder="ex:21"
+              />
+            </div>
+            <label for="salario-funcionario">Salário do Funcionário</label>
+            <div class="componentesG">
+              <i class="fa-solid fa-money-bills"></i>
+              <input
+                type="number"
+                name="salario-funcionario"
+                id="salario-funcionario"
+                placeholder="ex:1200"
+              />
+            </div>
+            <label for="departamento-funcionario">Departamento</label>
+            <div class="componentesG">
+              <i class="fas fa-sitemap"></i>
+              <input
+                type="text"
+                name="departamento-funcionario"
+                id="departamento-funcionario"
+                placeholder="ex:TI"
+              />
+            </div>
+            <div class="btns-funcionario">
+              <button id="criar-funcionario">Criar</button>
+            </div>
+          </form>
+          <button id="fechar">Fechar</button>
+        </div>
+        <div id="confirmaExcluirModal" class="modal" style="display: none">
+          <div class="modal-content">
+            <h2>Confirmação</h2>
+            <p>Tem certeza de que deseja excluir?</p>
+            <div class="btns-funcionario">
+              <button id="confirmar-excluir-btn">Excluir</button>
+              <button id="cancelar-exclusao">Cancelar</button>
+            </div>
+          </div>
+        </div>
+        <div class="container-funcionarios">
+            <table id="tabela-funcionarios">
+                <thead>
+                  <tr class="linha">
+                    <th class="celula-tabela">Nome</th>
+                    <th class="celula-tabela">Departamento</th>
+                    <th class="celula-tabela">Ações</th>
+                  </tr>
+                </thead>
+                <tbody class="funcionarios-tabela"></tbody>
+              </table>
+        </div>
+    </main>
+</body>
+</html>

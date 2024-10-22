@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.container-principal{
+    width: 100vw;
+    height: 110vh;
+    background-color: rgb(211, 210, 210);
+    position: relative;
+}
+.menu-principal{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0px 30px;
+    background-color: blue;
+}
+.itens-menu {
+    display: flex;
+    list-style: none;
+    padding-top: 10px;
+}
+
+.item-menus {
+   padding-right: 20px ;
+   text-align: center;
+}
+#nome-empresa{
+    color: rgb(255, 111, 0);
+}
+
+#btn-criar{
+    display: block;
+    padding:7.5px;
+    background-color: rgb(255, 111, 0);
+    color:#fff;
+    font-weight: bold;
+    border: 1px solid rgba(255, 111, 0, 0.301);
+    border-radius:5px;
+    position: relative;
+    margin-bottom: 10px;
+    transition: .3s ease-in-out;
+}
+#btn-criar:hover{
+    background-color: rgb(216, 94, 0) ;
+    cursor:pointer;
+}
+.container-funcionarios{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+#tabela-funcionarios {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 5px 2px var(rgba(211, 210, 210, 0.534));
+}
+.linha{
+    background-color:  rgb(216, 94, 0);
+    border-radius: 5px;
+}
+.celula-tabela {
+    padding: 15px;
+    background-color: var(--cor-4);
+    color:#fff;
+    border:2px outset var(--cor-1);
+    text-align: center;
+    font-size: 16px;
+}
+
+.funcionario-tabela td{
+    border:1px outset var(--cor-4);
+    text-align: center;
+    padding: 15px;
+}
