@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const loginController = async (data) => {
    
     const { email, password } = data;
-    
+
     try {
         
         const user = await User.findOne({ email });
