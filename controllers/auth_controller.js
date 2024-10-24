@@ -4,18 +4,21 @@ const User = require('../models/user.js');
 const bcrypt = require('bcrypt');
 
 const loginController = async (data) => {
+   
     const { email, password } = data;
-
+    
     try {
-        // Verificar se o usuário existe
+        
         const user = await User.findOne({ email });
         if (!user) {
-            return { error: 'Usuário não existe' }, 401;
+            return { error: 'Usuário não existe', statusCode: 401 };
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
+        console.log('Senha fornecida:', password);
+        console.log('Senha hashada:', user.password);
         if (!isPasswordValid) {
-            return { error: 'Senha inválida' }, 401;
+            return { error: 'Senha inválida', statusCode: 401 };
         }
 
         const tokenPayload = {
@@ -28,17 +31,28 @@ const loginController = async (data) => {
         const newToken = new Token({
             email: user.email,
             type: "access",
-            user_id_sha: user._id, // Aqui poderia ser o _id do usuário
+            user_id_sha: user._id,
             type_token: "access"
         });
 
         await newToken.save();
 
-        return { message: 'Sucesso no Login', token }, 200;
+        return { message: 'Sucesso no Login', token, statusCode: 200 };
     } catch (err) {
         console.error('Error in loginController:', err);
-        return { error: 'Internal server error' }, 500;
+        return { error: 'Internal server error', statusCode: 500 };
+    }
+};
+const getUserData = async (user) => {
+    try {
+        const userData = await User.findById(user.id).select('-password'); 
+        if (!userData) {
+            return { error: 'Usuário não encontrado' }; 
+        }
+        return { user: userData }; 
+    } catch (error) {
+        throw new Error('Erro ao buscar dados do usuário'); 
     }
 };
 
-module.exports = { loginController };
+module.exports = { loginController, getUserData };

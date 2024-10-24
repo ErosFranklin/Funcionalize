@@ -10,8 +10,8 @@ router.post('/users', async (req, res) => {
         return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
 
-    const [response, statusCode] = await createUserController(data);
-    return res.status(statusCode).json(response);
+    const result = await createUserController(data);
+    return res.status(result.statusCode || 500).json(result);
 });
 
 module.exports = router;

@@ -7,7 +7,7 @@ const createUserController = async (data) => {
     try {
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return { error: 'Email já está em uso' }, 400;
+            return { error: 'Email já está em uso', statusCode: 400 }; // Retornando como objeto
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -21,10 +21,10 @@ const createUserController = async (data) => {
 
         await newUser.save();
 
-        return { message: 'Usuário criado com sucesso', user: newUser }, 201;
+        return { message: 'Usuário criado com sucesso', user: newUser, statusCode: 201 }; 
     } catch (err) {
         console.error('Erro ao criar usuário:', err);
-        return { error: 'Erro interno do servidor' }, 500;
+        return { error: 'Erro interno do servidor', statusCode: 500 }; 
     }
 };
 
