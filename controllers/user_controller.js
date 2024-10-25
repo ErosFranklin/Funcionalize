@@ -9,14 +9,12 @@ const createUserController = async (data) => {
         if (existingUser) {
             return { error: 'Email já está em uso', statusCode: 400 }; // Retornando como objeto
         }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
+        
         const newUser = new User({
             name,
             niche,
             email,
-            password: hashedPassword 
+            password
         });
 
         await newUser.save();

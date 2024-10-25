@@ -13,10 +13,8 @@ const loginController = async (data) => {
         if (!user) {
             return { error: 'Usuário não existe', statusCode: 401 };
         }
-
+        
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log('Senha fornecida:', password);
-        console.log('Senha hashada:', user.password);
         if (!isPasswordValid) {
             return { error: 'Senha inválida', statusCode: 401 };
         }
@@ -37,7 +35,7 @@ const loginController = async (data) => {
 
         await newToken.save();
 
-        return { message: 'Sucesso no Login', token, statusCode: 200 };
+        return { message: 'Sucesso no Login', token, user, statusCode: 200 };
     } catch (err) {
         console.error('Error in loginController:', err);
         return { error: 'Internal server error', statusCode: 500 };
