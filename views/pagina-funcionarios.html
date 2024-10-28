@@ -22,53 +22,57 @@
         </header>
         <div id="overlay" class="overlay"></div>
         <div id="modal" class="modal" style="display: none">
-          <h2>Cadastrar Funcionario</h2>
+          <h2>Cadastrar Funcionário</h2>
           <form method="post" id="form-add-func">
             <label for="nome-funcionario">Nome do Funcionário</label>
-            <div class="componentesG">
-              <i class="icone fa-solid fa-user"></i>
+            <div class="componente">
+             
               <input
                 type="text"
                 name="nome-funcionario"
                 id="nome-funcionario"
                 placeholder="Nome Completo do Funcionário"
               />
+              <i class="icone fa-solid fa-user"></i>
             </div>
             <label for="idade-funcionario">Idade</label>
-            <div class="componentesG">
-              <i class="fa-solid fa-calendar-days"></i>
+            <div class="componente">
               <input
                 type="number"
                 name="idade-funcionario"
                 id="idade-funcionario"
                 placeholder="ex:21"
               />
+              <i class="icone2 fa-solid fa-calendar-days"></i>
             </div>
             <label for="salario-funcionario">Salário do Funcionário</label>
-            <div class="componentesG">
-              <i class="fa-solid fa-money-bills"></i>
+            <div class="componente">
+             
               <input
                 type="number"
                 name="salario-funcionario"
                 id="salario-funcionario"
                 placeholder="ex:1200"
               />
+              <i class="icone3 fas fa-money-bills"></i>
             </div>
             <label for="departamento-funcionario">Departamento</label>
-            <div class="componentesG">
-              <i class="fas fa-sitemap"></i>
+            <div class="componente">
+              
               <input
                 type="text"
                 name="departamento-funcionario"
                 id="departamento-funcionario"
                 placeholder="ex:TI"
               />
+              <i class="icone4 fas fa-sitemap"></i>
             </div>
             <div class="btns-funcionario">
               <button id="criar-funcionario">Criar</button>
+             
             </div>
           </form>
-          <button id="fechar">Fechar</button>
+          <button id="btn-fechar">Fechar</button>
         </div>
         <div id="confirmaExcluirModal" class="modal" style="display: none">
           <div class="modal-content">
@@ -93,5 +97,6 @@
               </table>
         </div>
     </main>
+    <script src="../public/javascript/pagina-funcionarios.js"></script>
 </body>
 </html>
