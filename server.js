@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./mongo/db_mongo.js'); 
+const cors = require('cors');
 const authRoutes = require('./routes/auth_routes.js');
 const userRoutes = require('./routes/user_routes.js'); 
 
@@ -8,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 connectDB();
+app.use(cors()); 
 app.use(express.json());
 
 //Uso das rotas
