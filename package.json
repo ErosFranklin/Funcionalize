@@ -8,7 +8,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [],
+ "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,10 +17,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-<<<<<<< Updated upstream
-=======
     "jwt-decode": "^4.0.0",
->>>>>>> Stashed changes
     "mongoose": "^8.7.2",
     "nodemon": "^3.1.7"
   }
