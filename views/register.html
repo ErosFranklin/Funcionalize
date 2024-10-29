@@ -29,7 +29,13 @@
                     <div class="componente">
                             <input type="password" name="password-empresa" id="password-empresa" placeholder="********" required>
                             <i class="icone3 fa-solid fa-lock"></i>
+                            <i class="eye fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
                     </div>
+                    <div class="componente">
+                        <input type="password" name="password-empresa" id="password-empresa2" placeholder="Confirmar Senha" required>
+                        <i class="icone3 fa-solid fa-lock"></i>
+                        <i class="eye fa-solid fa-eye" id="eyes2" onclick="mostrarConfSenha()"></i>
+                </div>
                     <div class="componente">
                         <select name="nicho" id="nicho">
                             <option value="Sem Nicho">Nicho da Empresa</option>
@@ -57,5 +63,7 @@
     <footer class="container-rodape">
 
     </footer>
+    <script src="../public/javascript/register.js"></script>
+    <script src="../public/javascript/eyes.js"></script>
 </body>
 </html>
