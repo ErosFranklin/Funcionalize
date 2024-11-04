@@ -141,6 +141,25 @@ select:focus ~ .icone4 {
     justify-content: center;
     position: relative;
 }
+.btns-excluir-funcionarios{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 5%;
+    position: relative;
+}
+#confirmar-excluir-btn{
+    border: none;
+    border-radius:5px;
+    color:#fff;
+    font-size: 15px;
+    padding: 10px;
+    margin-right: 10px;
+    width: 100px;
+    background-color: #03c700;
+    transition: .3s ease-in-out;
+}
 #criar-funcionario{
     border: none;
     border-radius:5px;
@@ -151,11 +170,21 @@ select:focus ~ .icone4 {
     background-color: #03c700;
     transition: .3s ease-in-out;
 }
-#criar-funcionario:hover{
+#criar-funcionario, #confirmar-excluir-btn:hover{
     background-color: #03c7009c;
     cursor: pointer;
 }
-
+#cancelar-exclusao{
+    border: none;
+    border-radius:5px;
+    color:#fff;
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    background-color: #03c700;
+    transition: .3s ease-in-out;
+    position: relative;
+}
 #btn-fechar{
     border: none;
     border-radius:5px;
@@ -170,7 +199,7 @@ select:focus ~ .icone4 {
     right: -50%;
     transform: translateX(-50%);
 }
-#btn-fechar:hover{
+#btn-fechar, #cancelar-exclusao:hover{
     background-color: #03c7009c;
     cursor: pointer;
 }
@@ -182,6 +211,20 @@ select:focus ~ .icone4 {
     align-items: center;
     flex-direction: column;
     position: relative;
+}
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.verificando{
+    animation: rotacao 1s infinite;
+    height: 100px;
+    width: 100px;
+    border-radius:50%;
+    border: 6px solid #e5e5e5;
+    border-top-color: #0050b8;
 }
 #tabela-funcionarios {
     width: 80%;
@@ -205,4 +248,12 @@ select:focus ~ .icone4 {
     border:1px outset var(--cor-4);
     text-align: center;
     padding: 15px;
+}
+
+#mensagem{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color:rgb(216, 94, 0);
+    text-decoration:underline;
 }
