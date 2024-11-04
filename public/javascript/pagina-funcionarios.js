@@ -316,7 +316,7 @@ async function atualizarFuncionario(id) {
 
   // Previne o comportamento padrão do formulário
   formEdit.addEventListener('submit', async function(event) {
-    event.preventDefault(); // Impede o recarregamento da página
+    event.preventDefault();
 
     const novoNome = document.querySelector('#novo-nome-funcionario').value;
     const novaIdade = document.querySelector('#novo-idade-funcionario').value;
@@ -327,7 +327,7 @@ async function atualizarFuncionario(id) {
       name: novoNome,
       age: novaIdade,
       salary: novoSalario,
-      department: novoDepartamento // Corrigido para "department"
+      department: novoDepartamento 
     };
 
     try {
