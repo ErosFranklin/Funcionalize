@@ -142,6 +142,10 @@ async function carregarFuncionarios() {
 
       if (novoFuncionario) {
         carregarFuncionarios();
+        document.getElementById('nome-funcionario').value = "";
+        document.getElementById('idade-funcionario').value = "";
+        document.getElementById('salario-funcionario').value = "";
+        document.getElementById('departamento-funcionario').value = "";
         fecharJanela(overlay, modalCriar, nomeFuncionario, idadeFuncionario, salarioFuncionario, departamentoFuncionario);
       }
     } catch (error) {
@@ -210,11 +214,11 @@ function atualizarTabela(dados) {
       linha.className = 'linha-funcionario'
 
       linha.innerHTML = `
-                  <td class='alunoAcesso'><a href="../html/dados-aluno.html?studentId=${funcionario._id}">${funcionario.name}</a></td>
-                  <td>${funcionario.age}</td>
-                  <td>${funcionario.salary}</td>
-                  <td>${funcionario.department}</td>
-                  <td>
+                  <td class='funcionarioAcesso'>${funcionario.name}</td>
+                  <td class='funcionarioAcesso'>${funcionario.age}</td>
+                  <td class='funcionarioAcesso'>${funcionario.salary}</td>
+                  <td class='funcionarioAcesso'>${funcionario.department}</td>
+                  <td class='funcionarioAcesso'>
                     <button class="btnEditar" data-id="${funcionario._id}">
                       <i class="fa-solid fa-pen-to-square"></i>
                     </button>

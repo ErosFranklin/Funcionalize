@@ -7,7 +7,7 @@
 }
 body{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     overflow: hidden;
 }
 .container-principal{
@@ -149,7 +149,7 @@ select:focus ~ .icone4 {
     margin-top: 5%;
     position: relative;
 }
-#confirmar-excluir-btn{
+#confirmar-excluir-btn, #btn-atualiza-funcionario{
     border: none;
     border-radius:5px;
     color:#fff;
@@ -170,11 +170,11 @@ select:focus ~ .icone4 {
     background-color: #03c700;
     transition: .3s ease-in-out;
 }
-#criar-funcionario, #confirmar-excluir-btn:hover{
+#criar-funcionario:hover, #confirmar-excluir-btn:hover, #btn-atualiza-funcionario:hover{
     background-color: #03c7009c;
     cursor: pointer;
 }
-#cancelar-exclusao{
+#cancelar-exclusao, #btn-fechar-edicao{
     border: none;
     border-radius:5px;
     color:#fff;
@@ -199,18 +199,20 @@ select:focus ~ .icone4 {
     right: -50%;
     transform: translateX(-50%);
 }
-#btn-fechar, #cancelar-exclusao:hover{
+#btn-fechar:hover, #cancelar-exclusao:hover, #btn-fechar-edicao:hover{
     background-color: #03c7009c;
     cursor: pointer;
 }
 .container-funcionarios{
-    width: 100vw;
-    height: 100vh;
-    display:flex;
+    width: 80%;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
 }
 .loader{
     display: flex;
@@ -224,10 +226,19 @@ select:focus ~ .icone4 {
     width: 100px;
     border-radius:50%;
     border: 6px solid #e5e5e5;
-    border-top-color: #0050b8;
+    border-top-color: rgb(216, 94, 0);
+}
+@keyframes rotacao {
+    to{
+        transform:rotate(1turn)
+    }
 }
 #tabela-funcionarios {
-    width: 80%;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-top: 3%;
+    position: relative;
     border-collapse: collapse;
     box-shadow: 2px 2px 5px 2px var(rgba(211, 210, 210, 0.534));
 }
@@ -237,17 +248,43 @@ select:focus ~ .icone4 {
 }
 .celula-tabela {
     padding: 15px;
-    background-color: var(--cor-4);
+    background-color: rgb(216, 94, 0);
     color:#fff;
-    border:2px outset var(--cor-1);
     text-align: center;
     font-size: 16px;
+    text-transform: uppercase;
 }
-
 .funcionario-tabela td{
-    border:1px outset var(--cor-4);
+    border:1px outset rgb(216, 94, 0);
     text-align: center;
     padding: 15px;
+    
+}
+.funcionarioAcesso{
+    background-color: rgb(255, 111, 0);
+    border:1px outset rgb(216, 94, 0);
+    text-align: center;
+    padding: 15px;
+    color:#fff;
+}
+.btnEditar{
+    background-color: transparent;
+    border:none;
+    font-size:18px;
+    color:#fff;
+    transition: .3s ease-in-out;
+    margin-right:30% ;
+}
+.btnExcluir{
+    background-color: transparent;
+    border:none;
+    font-size:18px;
+    color:#fff;
+    transition: .3s ease-in-out;
+}
+.btnEditar:hover, .btnExcluir:hover{
+    cursor: pointer;
+    color:#ffffff91;
 }
 
 #mensagem{
