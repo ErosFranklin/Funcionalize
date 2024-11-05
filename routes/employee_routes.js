@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post('/', authenticateJWT, createEmployee);
 
-router.get('/funcionarios/:id', authenticateJWT, getEmployeeById);
+router.get('/:id', authenticateJWT, getEmployeeById);
 
 router.get('/', authenticateJWT, getAllEmployees);
 
