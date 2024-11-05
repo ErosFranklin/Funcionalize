@@ -24,14 +24,16 @@ exports.createUserController = async (data) => {
         return { error: 'Erro interno do servidor', statusCode: 500 }; 
     }
 };
-// Buscar informações do usuário 
+// Buscar informações do usuário por ID
 exports.getAuthenticatedUser = async (req, res) => {
-    if (!req.user || !req.user.id) {
-        return res.status(400).json({ message: 'Usuário não autenticado' });
+    const userId = req.params.id;
+
+    if (!req.user || req.user.id !== userId) {
+        return res.status(403).json({ message: 'Acesso negado: Usuário não autenticado ou ID inválido' });
     }
 
     try {
-        const user = await User.findById(req.user.id).select('-password'); // Exclui a senha da resposta
+        const user = await User.findById(userId).select('-password'); // Exclui a senha da resposta
 
         if (!user) {
             return res.status(404).json({ message: 'Usuário não encontrado' });

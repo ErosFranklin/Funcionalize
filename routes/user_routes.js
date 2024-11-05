@@ -14,6 +14,6 @@ router.post('/users', async (req, res) => {
     const result = await createUserController(data);
     return res.status(result.statusCode || 500).json(result);
 });
-router.get('/users', authenticateJWT, getAuthenticatedUser);
+router.get('/user/:id', authenticateJWT, getAuthenticatedUser);
 
 module.exports = router;

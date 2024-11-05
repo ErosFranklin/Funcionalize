@@ -45,22 +45,30 @@ exports.getEmployeeById = async (req, res) => {
   };
   
   // Atualizar um funcionário
-  exports.updateEmployee = async (req, res) => {
-    try {
-      const employee = await Employee.findOneAndUpdate(
-        { _id: req.params.id, user: req.user.id },
-        { new: true }
-      );
-  
-      if (!employee) {
-        return res.status(404).json({ message: 'Funcionário não encontrado ou você não tem permissão' });
-      }
-  
-      res.json(employee);
-    } catch (err) {
-      res.status(400).json({ message: 'Erro ao atualizar funcionário: ' + err.message });
+exports.updateEmployee = async (req, res) => {
+  try {
+    const updateData = {
+      name: req.body.name,
+      age: req.body.age,
+      salary: req.body.salary,
+      department: req.body.department
+    };
+
+    const employee = await Employee.findOneAndUpdate(
+      { _id: req.params.id, user: req.user.id },
+      updateData,
+      { new: true } // Retorna o documento atualizado
+    );
+
+    if (!employee) {
+      return res.status(404).json({ message: 'Funcionário não encontrado ou você não tem permissão' });
     }
-  };
+
+    res.json(employee);
+  } catch (err) {
+    res.status(400).json({ message: 'Erro ao atualizar funcionário: ' + err.message });
+  }
+};
   
   // Deletar um funcionário
   exports.deleteEmployee = async (req, res) => {
