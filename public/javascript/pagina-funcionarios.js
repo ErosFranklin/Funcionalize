@@ -132,9 +132,12 @@ async function carregarFuncionarios() {
         alert("Preencha todas as informações!");
         return;
     }
-    console.log(document.querySelector("#tabela-funcionarios tbody"))
     if(verificarFuncionarios(nomeFuncionario, idadeFuncionario, salarioFuncionario, departamentoFuncionario)){
       alert("Esse funcionário(a) já está cadastrado(a)");
+      return;
+    }
+    if(idadeFuncionario <= 18){
+      alert("Idade inválida. O funcionário deve ser maior de 18 anos.");
       return;
     }
     
@@ -210,7 +213,7 @@ function atualizarTabela(dados) {
       linha.innerHTML = `
                   <td class='funcionarioAcesso'>${funcionario.name}</td>
                   <td class='funcionarioAcesso'>${funcionario.age}</td>
-                  <td class='funcionarioAcesso'>${funcionario.salary}</td>
+                  <td class='funcionarioAcesso'>R$${funcionario.salary}</td>
                   <td class='funcionarioAcesso'>${funcionario.department}</td>
                   <td class='funcionarioAcesso'>
                     <button class="btnEditar" data-id="${funcionario._id}">
