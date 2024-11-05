@@ -14,8 +14,27 @@ exports.createEmployee = async (req, res) => {
       res.status(400).json({ message: 'Erro ao criar funcionário: ' + err.message });
     }
   };
-  
-  // Ler todos os funcionários do usuário autenticado
+ // Buscar um funcionário 
+exports.getEmployeeById = async (req, res) => {
+  const { id } = req.params; 
+
+  if (!req.user || !req.user.id) {
+      return res.status(400).json({ message: 'Usuário não autenticado' });
+  }
+
+  try {
+      const employee = await Employee.findOne({ _id: id, user: req.user.id });
+
+      if (!employee) {
+          return res.status(404).json({ message: 'Funcionário não encontrado ou você não tem permissão' });
+      }
+      
+      res.json(employee);
+  } catch (err) {
+      res.status(500).json({ message: 'Erro ao buscar funcionário: ' + err.message });
+  }
+};
+  // Ler todos os funcionários
   exports.getAllEmployees = async (req, res) => {
     try {
       const employees = await Employee.find({ user: req.user.id });
