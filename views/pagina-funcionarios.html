@@ -58,13 +58,12 @@
             </div>
             <label for="departamento-funcionario">Departamento</label>
             <div class="componente">
-              
-              <input
+                <input
                 type="text"
                 name="departamento-funcionario"
                 id="departamento-funcionario"
                 placeholder="ex:TI"
-              />
+                />
               <i class="icone4 fas fa-sitemap"></i>
             </div>
             <div class="btns-funcionario">
@@ -78,23 +77,84 @@
           <div class="modal-content">
             <h2>Confirmação</h2>
             <p>Tem certeza de que deseja excluir?</p>
-            <div class="btns-funcionario">
+            <div class="btns-excluir-funcionarios">
               <button id="confirmar-excluir-btn">Excluir</button>
               <button id="cancelar-exclusao">Cancelar</button>
             </div>
           </div>
         </div>
+
+
+        <div id="confirmaEditarModal" class="modal" style="display: none">
+          <div class="modal-content">
+            <h2>Atualizar Dados do Funcionário</h2>
+          <form method="patch" id="form-edit-func">
+            <label for="nome-funcionario">Nome do Funcionário</label>
+            <div class="componente">
+              <input
+                type="text"
+                name="nome-funcionario"
+                id="novo-nome-funcionario"
+                placeholder="Nome Completo do Funcionário"
+              />
+              <i class="icone fa-solid fa-user"></i>
+            </div>
+            <label for="idade-funcionario">Idade</label>
+            <div class="componente">
+              <input
+                type="number"
+                name="idade-funcionario"
+                id="novo-idade-funcionario"
+                placeholder="ex:21"
+              />
+              <i class="icone2 fa-solid fa-calendar-days"></i>
+            </div>
+            <label for="salario-funcionario">Salário do Funcionário</label>
+            <div class="componente">
+             
+              <input
+                type="number"
+                name="salario-funcionario"
+                id="novo-salario-funcionario"
+                placeholder="ex:1200"
+              />
+              <i class="icone3 fas fa-money-bills"></i>
+            </div>
+            <label for="departamento-funcionario">Departamento</label>
+            <div class="componente">
+              <input
+              type="text"
+              name="departamento-funcionario"
+              id="novo-departamento-funcionario"
+              placeholder="ex:TI"
+              />
+              <i class="icone4 fas fa-sitemap"></i>
+            </div>
+            <div class="btns-funcionario">
+              <button id="btn-atualiza-funcionario">Atualizar</button>
+              <button id="btn-fechar-edicao">Cancelar</button>
+            </div>
+          </form>
+          
+          </div>
+        </div>
         <div class="container-funcionarios">
-            <table id="tabela-funcionarios">
+          <div class="mensagem-erro" id="mensagem-erro" style="display: none;"> <p id="mensagem">Nenhum funcionário cadastrado!</p></div>
+          <div class="loader">
+            <div class="verificando" id="verificando"></div>
+          </div>
+            <table id="tabela-funcionarios" style="display: none;">
                 <thead>
                   <tr class="linha">
                     <th class="celula-tabela">Nome</th>
+                    <th class="celula-tabela">Idade</th>
+                    <th class="celula-tabela">Salário</th>
                     <th class="celula-tabela">Departamento</th>
                     <th class="celula-tabela">Ações</th>
                   </tr>
                 </thead>
                 <tbody class="funcionarios-tabela"></tbody>
-              </table>
+            </table>
         </div>
     </main>
     <script src="../public/javascript/pagina-funcionarios.js"></script>

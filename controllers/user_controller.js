@@ -1,6 +1,6 @@
 const User = require('../models/user.js');
 
-const createUserController = async (data) => {
+exports.createUserController = async (data) => {
     const { name, niche, email, password } = data;
 
     try {
@@ -24,5 +24,23 @@ const createUserController = async (data) => {
         return { error: 'Erro interno do servidor', statusCode: 500 }; 
     }
 };
+// Buscar informações do usuário por ID
+exports.getAuthenticatedUser = async (req, res) => {
+    const userId = req.params.id;
 
-module.exports = { createUserController };
+    if (!req.user || req.user.id !== userId) {
+        return res.status(403).json({ message: 'Acesso negado: Usuário não autenticado ou ID inválido' });
+    }
+
+    try {
+        const user = await User.findById(userId).select('-password'); // Exclui a senha da resposta
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
+        }
+
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: 'Erro ao buscar usuário: ' + err.message });
+    }
+};
