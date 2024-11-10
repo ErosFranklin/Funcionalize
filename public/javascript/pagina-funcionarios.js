@@ -132,7 +132,7 @@ async function carregarFuncionarios() {
         alert("Preencha todas as informações!");
         return;
     }
-    if(verificarFuncionarios(nomeFuncionario, idadeFuncionario, salarioFuncionario, departamentoFuncionario)){
+    if(verificarFuncionarios(nomeFuncionario.trim(), idadeFuncionario, departamentoFuncionario.trim())){
       alert("Esse funcionário(a) já está cadastrado(a)");
       return;
     }
@@ -236,19 +236,21 @@ function atualizarTabela(dados) {
 }
 
 //FUNCAO QUE VERIFICA SE O ALGUM FUNCIONARIO JA ESTA CADASTRADO COM AQUELAS FUNCOES
-function verificarFuncionarios(nome, idade, salario, departamento) {
+function verificarFuncionarios(nome, idade,departamento) {
   const funcionarios = Array.from(document.querySelectorAll("#tabela-funcionarios tbody .linha-funcionario"));
-  console.log(funcionarios)
+  console.log(funcionarios);
 
   return funcionarios.some(funcionario => {
       const nomeFuncionario = funcionario.querySelector("td:nth-child(1)").textContent.trim();
-      const idadeFuncionario = funcionario.querySelector("td:nth-child(2)").textContent.trim();
-      const salarioFuncionario = funcionario.querySelector("td:nth-child(3)").textContent.trim()
+      const idadeFuncionario = parseInt(funcionario.querySelector("td:nth-child(2)").textContent.trim());
       const departamentoFuncionario = funcionario.querySelector("td:nth-child(4)").textContent.trim();
 
-      console.log(nomeFuncionario, idadeFuncionario, salarioFuncionario, departamentoFuncionario)
+      console.log("Comparando com:", nomeFuncionario, idadeFuncionario, departamentoFuncionario);
+      console.log("Dados de entrada:", nome, parseInt(idade), departamento);
 
-      return nomeFuncionario === nome && idadeFuncionario === idade && salarioFuncionario === salario && departamentoFuncionario === departamento;
+      return nomeFuncionario === nome &&
+             idadeFuncionario === parseInt(idade) &&
+             departamentoFuncionario === departamento;
   });
 }
 
@@ -324,7 +326,7 @@ async function atualizarFuncionario(id) {
     return;
   }
 
-  const submitHandler = async function(event) {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const novoNome = document.querySelector('#novo-nome-funcionario').value;
@@ -334,45 +336,50 @@ async function atualizarFuncionario(id) {
 
     const dados = {
       name: novoNome,
-      age: novaIdade,
-      salary: novoSalario,
+      age: Number(novaIdade),
+      salary: Number(novoSalario),
       department: novoDepartamento 
     };
-
-    try {
-      console.log(dados)
-      const response = await fetch(`http://localhost:3000/api/employees/${id}`, {
-        method: 'PUT',
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(dados)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message);
+    if(!verificarFuncionarios(dados.name.trim(), dados.age, dados.department.trim())){
+      try {
+        const response = await fetch(`http://localhost:3000/api/employees/${id}`, {
+          method: 'PUT',
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(dados)
+        });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+  
+        await response.json();
+        await carregarFuncionarios();
+        alert("Funcionário atualizado com sucesso!");
+  
+      } catch (error) {
+        console.error("Erro ao tentar atualizar funcionário:", error);
+        alert("Erro ao atualizar funcionário: " + error.message);
       }
-
-      await response.json();
-      await carregarFuncionarios();
-      alert("Funcionário atualizado com sucesso!");
-
-    } catch (error) {
-      console.error("Erro ao tentar atualizar funcionário:", error);
-      alert("Erro ao atualizar funcionário: " + error.message);
+    }else{
+      alert("Esse(s) dado(s) já estão cadastrado(os)")
     }
   };
-
-  formEdit.removeEventListener('submit', submitHandler);
-  formEdit.addEventListener('submit', submitHandler);
+  formEdit.addEventListener('submit', submitHandler, { once: true }); // Adiciona o handler uma única vez
 }
 
 //FUNCAO QUE CARREGA OS DADOS DO FUNCIONARIO QUE SERA ATUALIZADO
-async function carregarDadosFuncionario(id){
+async function carregarDadosFuncionario(id) {
   const token = localStorage.getItem("token");
-  
+
+  if (!token) {
+    console.error("Erro: Token não encontrado.");
+    return;
+  }
+
   try {
     const response = await fetch(`http://localhost:3000/api/employees/${id}`, {
       method: 'GET',
